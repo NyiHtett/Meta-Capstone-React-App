@@ -28,10 +28,15 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={(loggedIn) ? "Onboarding" : "Profile"}>
+      <Stack.Navigator>
+      {(loggedIn) ? (
+        <>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
+        </>
+      ):(
         <Stack.Screen name="Onboarding" component={Onboarding} />
+      )}
       </Stack.Navigator>
     </NavigationContainer>
   );

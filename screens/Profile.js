@@ -180,7 +180,7 @@ const handleLogOut = async () => {
   console.log("deleted the storage");
 };
 
-const Avatar = () => {
+export const Avatar = () => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -214,12 +214,12 @@ const Avatar = () => {
       {image ? (
         <Image
           source={{ uri: image }}
-          style={{ width: 35, height: 35, borderRadius: "50%" }}
+          style={{ width: 35, height: 35, borderRadius: 50 }}
         />
       ) : (
         <Image
           source={require("../assets/profile.jpeg")}
-          style={{ width: 35, height: 35, borderRadius: "50%" }}
+          style={{ width: 35, height: 35, borderRadius: 50 }}
         />
       )}
     </Pressable>
