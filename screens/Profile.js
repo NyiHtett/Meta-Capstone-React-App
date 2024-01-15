@@ -29,15 +29,14 @@ const Form = ({ navigation }) => {
       setlname(await AsyncStorage.getItem("lname"));
       setEmail(await AsyncStorage.getItem("email"));
       setNumber(await AsyncStorage.getItem("number"));
+      setImage(await AsyncStorage.getItem("image"));
       const status = await AsyncStorage.getItem("Order Statuses");
       console.log(status);
-      if(status === 'true'){
+      if (status === "true") {
         setOrder(true);
-      }
-      else if(status === 'false') {
+      } else if (status === "false") {
         setOrder(false);
-      }
-      else {
+      } else {
         setOrder(false);
       }
     };
@@ -45,8 +44,8 @@ const Form = ({ navigation }) => {
   }, [order]);
   onSelectionsChange = (selectedChoices) => {
     // selectedFruits is array of { label, value }
-    this.setState({ selectedChoices })
-  }
+    this.setState({ selectedChoices });
+  };
   return (
     <View style={style.formContainer}>
       <View>
@@ -85,41 +84,41 @@ const Form = ({ navigation }) => {
         />
       </View>
 
-      <Text style={{...style.textHeader, marginVertical: 20}}>Email Notifications</Text>
+      <Text style={{ ...style.textHeader, marginVertical: 20 }}>
+        Email Notifications
+      </Text>
       <BouncyCheckbox
-  size={25}
-  fillColor="#495E57"
-  unfillColor="#FFFFFF"
-  text="Order Statuses"
-  isChecked={true}
-  iconStyle={{ borderColor:"" }}
-  innerIconStyle={{ borderWidth: 2 }}
-  textStyle={{ fontFamily: "JosefinSans-Regular" }}
-  onPress={(isChecked) => {
-    const update = async () => {
-    if(isChecked) {
-      await AsyncStorage.setItem("Order Statuses", 'true');
-      setOrder(isChecked)
-    }
-    else {
-      await AsyncStorage.setItem("Order Statuses", 'false');
-    }
-  }
-  update();
-  }}
-  
-/>
-<BouncyCheckbox
-  size={25}
-  fillColor="#495E57"
-  unfillColor="#FFFFFF"
-  text="Password Changes"
-  isChecked={true}
-  iconStyle={{ borderColor:"" }}
-  innerIconStyle={{ borderWidth: 2 }}
-  textStyle={{ fontFamily: "JosefinSans-Regular" }}
-  onPress={(isChecked: boolean) => {}}
-/>
+        size={25}
+        fillColor="#495E57"
+        unfillColor="#FFFFFF"
+        text="Order Statuses"
+        isChecked={true}
+        iconStyle={{ borderColor: "" }}
+        innerIconStyle={{ borderWidth: 2 }}
+        textStyle={{ fontFamily: "JosefinSans-Regular" }}
+        onPress={(isChecked) => {
+          const update = async () => {
+            if (isChecked) {
+              await AsyncStorage.setItem("Order Statuses", "true");
+              setOrder(isChecked);
+            } else {
+              await AsyncStorage.setItem("Order Statuses", "false");
+            }
+          };
+          update();
+        }}
+      />
+      <BouncyCheckbox
+        size={25}
+        fillColor="#495E57"
+        unfillColor="#FFFFFF"
+        text="Password Changes"
+        isChecked={true}
+        iconStyle={{ borderColor: "" }}
+        innerIconStyle={{ borderWidth: 2 }}
+        textStyle={{ fontFamily: "JosefinSans-Regular" }}
+        onPress={(isChecked: boolean) => {}}
+      />
       <View>
         <Pressable
           onPress={() => {
